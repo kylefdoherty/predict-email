@@ -17,7 +17,8 @@ class PredictEmail
       "Linda Li" => "linda.li@alphasights.com",
       "Larry Page" => "larry.p@google.com",
       "Sergey Brin" => "s.brin@google.com",
-      "Steve Jobs" => "s.j@apple.com"
+      "Steve Jobs" => "s.j@apple.com",
+      "Kyle Doherty" => "kyle_doherty@flatironschool.com"
     }
   end 
 
@@ -26,10 +27,13 @@ class PredictEmail
   #use those emails to to find pattern company uses
   #return that pattern
 
-  def find_contacts(company)
-    company_contacts = emails.select {|k,v| v.include?('alphasights.com') }
+  def normalize_company_name(company)
+    company.downcase.gsub(/\s+/, "")
+  end 
 
-    # binding.pry
+  def find_contacts(company)
+    company = normalize_company_name(company)
+    company_contacts = emails.select {|k,v| v.include?(company) }
   end 
 
   def split_email(email)
@@ -39,11 +43,11 @@ class PredictEmail
   def find_patterns(company)
     patterns = []
 
+      
     find_contacts(company).each do |contact|
       first_name, last_name = contact.first.downcase.split(' ')
       before_dot, after_dot = split_email(contact.last)
 
-      
       if first_name == before_dot && last_name == after_dot
         patterns << "first_name_dot_last_name"
       elsif first_name == before_dot && last_name[0] == after_dot
@@ -53,7 +57,7 @@ class PredictEmail
       elsif first_name[0] == before_dot && last_name[0] == after_dot
         patterns << "first_initial_dot_last_initial"
       else 
-        "Not sure"
+        patterns << "Sorry, can not predict pattern for this company."
       end 
 
       
@@ -63,7 +67,7 @@ class PredictEmail
       #if statement to see which pattern it uses
     end 
 
-    patterns.uniq!
+    patterns = patterns.uniq
   end 
 
 
