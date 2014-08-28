@@ -64,21 +64,29 @@ describe PredictEmail do
   describe 'find_patterns' do 
     context 'compnay uses one email pattern' do 
       it 'returns the pattern(s) that company uses' do 
-        expect(prediction.find_patterns('alphasights')).to eq(['first_name_dot_last_name'])
+        expect(prediction.find_patterns('AlphasiGhts')).to eq(['first_name_dot_last_name'])
       end 
     end     
 
     context 'compnay uses more than one email pattern' do 
       it 'returns the pattern(s) that company uses' do 
-        expect(prediction.find_patterns('google')).to eq(['first_name_dot_last_initial','first_initial_dot_last_name' ])
+        expect(prediction.find_patterns('Google')).to eq(['first_name_dot_last_initial','first_initial_dot_last_name' ])
       end 
     end 
 
     context 'company email pattern is not one of four checking for' do 
-      it 'returns the pattern(s) that company uses' do 
-        expect(prediction.find_patterns('flatiron school')).to eq(['Sorry, can not predict pattern for this company.'])
+      it 'returns that it can not predict that pattern' do 
+        expect(prediction.find_patterns('Flatiron School')).to eq(["Sorry, we can't predict pattern for this company."])
       end 
     end 
+
+    context 'no emails are returned for that company' do 
+      it 'returns that there are no contacts for that company' do 
+        expect(prediction.find_patterns('Partner Group')).to eq(["Sorry, we don't have any contacts for that company to make a prediction from."])
+      end 
+    end 
+
+
   end 
 
 
