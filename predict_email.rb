@@ -4,12 +4,6 @@ class PredictEmail
   attr_reader :patterns, :emails
 
   def initialize 
-    @patterns = {
-      first_name_dot_last_name: "john.ferguson@alphasights.com",
-      first_name_dot_last_initial: "john.f@alphasights.com",
-      first_initial_dot_last_name: "j.ferguson@alphasights.com",
-      first_initial_dot_last_initial: "j.f@alphasights.com"
-    }
 
     @emails = {
       "John Ferguson" => "john.ferguson@alphasights.com",
@@ -40,31 +34,29 @@ class PredictEmail
     email[/[^@]+/].downcase.split('.')
   end
 
-  def find_patterns(company)
-    patterns = []
-
-      
-    find_contacts(company).each do |contact|
-      first_name, last_name = contact.first.downcase.split(' ')
-      before_dot, after_dot = split_email(contact.last)
+  def email_pattern(contact)
+    first_name, last_name = contact.first.downcase.split(' ')
+    before_dot, after_dot = split_email(contact.last)
 
       if first_name == before_dot && last_name == after_dot
-        patterns << "first_name_dot_last_name"
+        "first_name_dot_last_name"
       elsif first_name == before_dot && last_name[0] == after_dot
-        patterns << "first_name_dot_last_initial"
+        "first_name_dot_last_initial"
       elsif first_name[0] == before_dot && last_name == after_dot
-        patterns << "first_initial_dot_last_name"
+        "first_initial_dot_last_name"
       elsif first_name[0] == before_dot && last_name[0] == after_dot
-        patterns << "first_initial_dot_last_initial"
+        "first_initial_dot_last_initial"
       else 
-        patterns << "Sorry, can not predict pattern for this company."
+        "Sorry, can not predict pattern for this company."
       end 
 
-      
-      #always split by dot
-      #grab chars before @
-      #split on dot
-      #if statement to see which pattern it uses
+  end 
+
+  def find_patterns(company)
+    patterns = []
+ 
+    find_contacts(company).each do |contact|
+      patterns << email_pattern(contact)
     end 
 
     patterns = patterns.uniq
