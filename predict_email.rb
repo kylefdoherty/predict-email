@@ -60,4 +60,49 @@ class PredictEmail
       patterns = patterns.uniq
   end 
 
+  def patterns_to_string(patterns)
+    patterns.join(", ")
+  end 
+
+  def emails_to_string(emails)
+    emails.join(", ").gsub(", ", " OR ")
+  end 
+
+  def first_name_dot_last_name(name, company)
+    name.gsub(' ', '.').downcase + '@' + company
+  end 
+
+
+
+
+  def predict_email(name, company)
+    #find the pattern they use 
+    #going to need to figure out how to deal with when it can't return a prediction
+    patterns = find_patterns(company)
+    patterns_string = patterns_to_string(patterns)
+    num_of_patterns = patterns.size
+    pluralize_pattern = patterns.size > 1 ? 'patterns' : 'pattern'
+
+    emails = patterns.map {|pat| self.send(pat.to_sym, name, company)}
+    emails_string = emails_to_string(emails)
+
+    #now I know which pattern(s) it uses
+    #I want to be able to say it uses x pattern, give me back the correct email
+    #for this pattern
+
+
+
+    "#{company} uses #{num_of_patterns} email #{pluralize_pattern}: #{patterns_string}. We predict #{name}'s email to be: #{emails_string}."
+    #use that to create email for person 
+  end 
 end 
+
+
+
+
+
+
+
+
+
+

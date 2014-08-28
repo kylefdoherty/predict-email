@@ -8,7 +8,7 @@ require_relative '../predict_email'
 # "Barack Obama", "whitehouse.gov"
 
 #todo 
-  #create class that has patterns & sample data 
+  #create class that has sample data 
   #method that takes in name and company and figures out which pattern(s) that company uses
   #method returns what pattern(s) the company uses
 
@@ -16,6 +16,10 @@ require_relative '../predict_email'
     #for now going to assume always have email samples for all companies 
   #if returnd contact emails don't have dots (don't fit 1 of 4 patterns) return some
     #sort of error - for now assume that doesn't happen 
+
+  #create method that accepts the name and company and returns:
+    #company x uses # of pattern(s): pattern
+    #F_Name L_Name's email is most likely x or y (if there is more than one pattern used)
 
 describe PredictEmail do 
 
@@ -61,37 +65,41 @@ describe PredictEmail do
   #loop through the emails we have and figure out what each uses 
   #and store them in a patterns collection 
 
-  describe 'find_patterns' do 
+  describe '#find_patterns' do 
     context 'compnay uses one email pattern' do 
       it 'returns the pattern(s) that company uses' do 
-        expect(prediction.find_patterns('AlphasiGhts')).to eq(['first_name_dot_last_name'])
+        expect(prediction.find_patterns('Alphasights.com')).to eq(['first_name_dot_last_name'])
       end 
     end     
 
     context 'compnay uses more than one email pattern' do 
       it 'returns the pattern(s) that company uses' do 
-        expect(prediction.find_patterns('Google')).to eq(['first_name_dot_last_initial','first_initial_dot_last_name' ])
+        expect(prediction.find_patterns('google.com')).to eq(['first_name_dot_last_initial','first_initial_dot_last_name' ])
       end 
     end 
 
     context 'company email pattern is not one of four checking for' do 
       it 'returns that it can not predict that pattern' do 
-        expect(prediction.find_patterns('Flatiron School')).to eq(["Sorry, we can't predict pattern for this company."])
+        expect(prediction.find_patterns('flatironschool.com')).to eq(["Sorry, we can't predict pattern for this company."])
       end 
     end 
 
     context 'no emails are returned for that company' do 
       it 'returns that there are no contacts for that company' do 
-        expect(prediction.find_patterns('Partner Group')).to eq(["Sorry, we don't have any contacts for that company to make a prediction from."])
+        expect(prediction.find_patterns('partnersgroup.com')).to eq(["Sorry, we don't have any contacts for that company to make a prediction from."])
       end 
     end 
 
-
   end 
 
+  describe '#predict_email' do 
+    it "predicts the person's email and returns pattern and predicted email(s)" do 
 
-
-
+      expected_response = "alphasights.com uses 1 email pattern: first_name_dot_last_name. We predict Peter Wong's email to be: peter.wong@alphasights.com."
+   
+      expect(prediction.predict_email( "Peter Wong", "alphasights.com")).to eq(expected_response)
+    end 
+  end 
 
 end 
 
