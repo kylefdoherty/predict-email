@@ -21,6 +21,16 @@ require_relative '../predict_email'
     #company x uses # of pattern(s): pattern
     #F_Name L_Name's email is most likely x or y (if there is more than one pattern used)
 
+    #create tests for 1 pattern, multiple, not 1 of 4 patterns, no examples from company
+    #create tests for 4 pattern methods
+    #refactor code for methods
+    #review code and break into smaller classes
+    #create CLI 
+    #build out readme to explain app and how to use - make like Avi's where just clone & run command
+    #make sample emails pull from a file so user can add to file or user another one
+    #create rails app that utilizes this code for models, allows user to add emails or upload csv
+      #then can input a name and company name and get back a prediction 
+
 describe PredictEmail do 
 
   let(:prediction) { PredictEmail.new }
@@ -80,25 +90,56 @@ describe PredictEmail do
 
     context 'company email pattern is not one of four checking for' do 
       it 'returns that it can not predict that pattern' do 
-        expect(prediction.find_patterns('flatironschool.com')).to eq(["Sorry, we can't predict pattern for this company."])
+        expect(prediction.find_patterns('flatironschool.com')).to eq([nil])
       end 
     end 
 
     context 'no emails are returned for that company' do 
       it 'returns that there are no contacts for that company' do 
-        expect(prediction.find_patterns('partnersgroup.com')).to eq(["Sorry, we don't have any contacts for that company to make a prediction from."])
+        expect(prediction.find_patterns('partnersgroup.com')).to eq([nil])
       end 
     end 
 
   end 
 
   describe '#predict_email' do 
-    it "predicts the person's email and returns pattern and predicted email(s)" do 
 
-      expected_response = "alphasights.com uses 1 email pattern: first_name_dot_last_name. We predict Peter Wong's email to be: peter.wong@alphasights.com."
-   
-      expect(prediction.predict_email( "Peter Wong", "alphasights.com")).to eq(expected_response)
+    context 'company uses one pattern' do 
+      it "predicts the person's email and returns pattern and predicted email" do 
+
+        expected_response = "alphasights.com uses 1 email pattern: first_name_dot_last_name. We predict Peter Wong's email to be: peter.wong@alphasights.com."
+     
+        expect(prediction.predict_email( "Peter Wong", "alphasights.com")).to eq(expected_response)
+      end 
     end 
+
+    context 'company uses more than one pattern' do 
+      it "predicts the person's email and returns patterns and predicted emails" do
+        expected_response = "google.com uses 2 email patterns: first_name_dot_last_initial, first_initial_dot_last_name. We predict Craig Silverstein's email to be: craig.s@google.com OR c.silverstein@google.com."
+
+        expect(prediction.predict_email("Craig Silverstein", "google.com")).to eq(expected_response)
+
+      end  
+    end 
+
+    context 'company uses more than one pattern' do 
+      it "tells user can't predict the email for this person" do
+        expected_response = "Sorry, we can't predict the email for this person."
+
+        expect(prediction.predict_email("Avi Flombaum", "flatironschool.com")).to eq(expected_response)
+
+      end  
+    end 
+
+    context 'no contacts for that company' do 
+      it "tells user can't predict email for this person" do
+        expected_response = "Sorry, we can't predict the email for this person."
+
+        expect(prediction.predict_email("Rust Cohle", "truedetective.com")).to eq(expected_response)
+
+      end  
+    end 
+    
   end 
 
 end 
