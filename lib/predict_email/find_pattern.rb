@@ -1,17 +1,14 @@
+require 'csv'
+
 module PredictEmail
   class FindPattern
     attr_reader :emails
 
     def initialize 
-      @emails = {
-        "John Ferguson" => "john.ferguson@alphasights.com",
-        "Damon Aw" => "damon.aw@alphasights.com",
-        "Linda Li" => "linda.li@alphasights.com",
-        "Larry Page" => "larry.p@google.com",
-        "Sergey Brin" => "s.brin@google.com",
-        "Steve Jobs" => "s.j@apple.com",
-        "Kyle Doherty" => "kyle_doherty@flatironschool.com"
-      }
+      @emails = CSV.read(Dir.pwd + '/lib/predict_email/csv/sample_data.csv').inject({}) do |result, element|
+        result[element.first] = element.last
+        result
+      end 
     end 
 
     def normalize_company_name(company)
@@ -59,4 +56,9 @@ module PredictEmail
         patterns = patterns.uniq
     end 
   end 
+end 
+
+
+if $0 == __FILE__
+  test = PredictEmail::FindPattern.new
 end 
