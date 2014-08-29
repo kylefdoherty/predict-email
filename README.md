@@ -12,9 +12,9 @@ If you install the gem it comes with a sample-data.csv file which contains 7 con
 
 There are two ways to use this gem: 
 
-###1
+###1st
 
-Run
+Install the Gem
 
     gem install predict_email
 
@@ -26,7 +26,7 @@ After installing the gem, run:
 
 This will prompt you to enter a name and company website.
 
-###2
+###2nd
 
 Fork and clone this repo 
 
@@ -38,7 +38,7 @@ Run Bundle install
 
 Add a csv file to lib/predict_email/csv
 
-    ![alt tag](https://github.com/kylefdoherty/predict-email/blob/master/images/add_csv_file.png)
+![alt tag](https://raw.githubusercontent.com/kylefdoherty/predict-email/master/images/add_csv_file.png)
 
 
 ## Usage
