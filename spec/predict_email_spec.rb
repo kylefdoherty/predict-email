@@ -1,8 +1,8 @@
 require_relative 'spec_helper'
 
-describe PredictEmail do 
+describe PredictEmail::PredictEmail do 
 
-  let(:prediction) { PredictEmail.new }
+  let(:prediction) { PredictEmail::PredictEmail.new }
 
   describe '#predict_email' do 
 

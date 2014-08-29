@@ -1,8 +1,8 @@
 require_relative 'spec_helper'
 
-describe FindPattern do 
+describe PredictEmail::FindPattern do 
 
-  let(:prediction) { FindPattern.new }
+  let(:prediction) { PredictEmail::FindPattern.new }
 
   let(:sample_emails) {
     {
@@ -20,7 +20,7 @@ describe FindPattern do
   #create class that has patterns & sample data
   describe '#new' do 
     it 'is an instance of PredictEmail' do 
-      expect(prediction).to be_instance_of(FindPattern)
+      expect(prediction).to be_instance_of(PredictEmail::FindPattern)
     end
 
     it 'has the sample data on initialization' do 

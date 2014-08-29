@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'predict_email'
+
+PredictEmail::Cli::App.new

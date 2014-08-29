@@ -1,3 +1,3 @@
 require 'rspec'
-require_relative '../find_pattern'
-require_relative '../predict_email'
+require_relative '../lib/predict_email/find_pattern'
+require_relative '../lib/predict_email/predict_email'
