@@ -24,7 +24,7 @@ After installing the gem, run:
 
     $ predict_email
 
-This will prompt you to enter a name and company website.
+This will prompt you to enter a name and company.
 
 ###2nd
 
@@ -45,8 +45,6 @@ In find_pattern.rb change the file path to the csv you added:
 ![alt tag](https://raw.githubusercontent.com/kylefdoherty/predict-email/master/images/find_pattern_file.png)
 
 ![alt tag](https://raw.githubusercontent.com/kylefdoherty/predict-email/master/images/find_pattern_rb_%E2%80%94_predict_email.png)
-
-
 
 
 ## Usage
