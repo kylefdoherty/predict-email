@@ -1,7 +1,7 @@
 # PredictEmail
 [![Gem Version](https://badge.fury.io/rb/predict_email.svg)](http://badge.fury.io/rb/predict_email)
 [![Code Climate](https://codeclimate.com/repos/53ff211a6956807cee01ecad/badges/9f8afa9a0ff41f8e85ff/gpa.svg)](https://codeclimate.com/repos/53ff211a6956807cee01ecad/feed)
-[![Build Status](https://travis-ci.org/kylefdoherty/email-prediction.svg?branch=master)](https://travis-ci.org/kylefdoherty/email-prediction)
+[![Build Status](https://travis-ci.org/kylefdoherty/predict-email.svg?branch=master)](https://travis-ci.org/kylefdoherty/predict-email)
 [![Coverage Status](https://img.shields.io/coveralls/kylefdoherty/email-prediction.svg)](https://coveralls.io/r/kylefdoherty/email-prediction?branch=master)
 
 Predict Email was a coding challenge I recieved. The challenge was to create an email predictor that uses current contacts, such as: Linda Li,linda.li@alphasights.com, Sergey Brin,s.brin@google.com, Steve Jobs,s.j@apple.com, etc. to predict what a given person's email should be.  So for example, if I input: "Jane Doe, Apple.com", it should predict that Jane's email should be - j.d@apple.com.
@@ -62,6 +62,11 @@ This will return the prediction for his email.  Note that if you don't include a
 If you've forked and cloned the repo, simple follow the installation instructions above and then run:
 
     predict_email
+
+## Next Steps 
+
+* Look into using Thor for the CLI
+* Look into allowing users to update the csv file after installing gem so don't have to clone repo to do so 
 
 
 ## Contributing
