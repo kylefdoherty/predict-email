@@ -1,23 +1,37 @@
 # PredictEmail
+[![Gem Version](https://badge.fury.io/rb/predict_email.svg)](http://badge.fury.io/rb/predict_email)
 [![Code Climate](https://codeclimate.com/repos/53ff211a6956807cee01ecad/badges/9f8afa9a0ff41f8e85ff/gpa.svg)](https://codeclimate.com/repos/53ff211a6956807cee01ecad/feed)
 [![Build Status](https://travis-ci.org/kylefdoherty/email-prediction.svg?branch=master)](https://travis-ci.org/kylefdoherty/email-prediction)
 [![Coverage Status](https://img.shields.io/coveralls/kylefdoherty/email-prediction.svg)](https://coveralls.io/r/kylefdoherty/email-prediction?branch=master)
 
-TODO: Write a gem description
+Predict Email was a coding challenge I recieved from a company. The challenge was to create an email predictor that uses current contacts, such as: Linda Li,linda.li@alphasights.com, Sergey Brin,s.brin@google.com, Steve Jobs,s.j@apple.com, etc. to predict what a given person's email should be.  So for example, if I input: "Jane Doe, Apple.com", it should predict that Jane's email should be - j.d@apple.com.
+
+If you install the gem it comes with a sample-data.csv file which contains 7 contacts from various companies. If you fork and clone the repo you can upload your own csv file, see intsallation below for more info.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+There are two ways to use this gem: 
 
-    gem 'predict_email'
+###1
 
-And then execute:
+Run
 
-    $ bundle
+    gem install predict_email
 
-Or install it yourself as:
+This will install the gem locally, and allow you to predict emails using the sample data.
 
-    $ gem install predict_email
+After installing the gem, run:
+
+    $ predict_email
+
+This will prompt you to enter a name and company website.
+
+###2
+
+Fork and clone this repo 
+
+    git clone git@github.com:{username}/predict-email.git
+
 
 ## Usage
 
