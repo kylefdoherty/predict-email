@@ -45,6 +45,10 @@ module PredictEmail
   end 
 end 
 
+if $0 == __FILE__
+  PredictEmail::Cli::App.new
+end 
+
 
 
 

@@ -1,5 +1,7 @@
 # PredictEmail
 [![Code Climate](https://codeclimate.com/repos/53ff211a6956807cee01ecad/badges/9f8afa9a0ff41f8e85ff/gpa.svg)](https://codeclimate.com/repos/53ff211a6956807cee01ecad/feed)
+[![Build Status](https://travis-ci.org/kylefdoherty/email-prediction.svg?branch=master)](https://travis-ci.org/kylefdoherty/email-prediction)
+[![Coverage Status](https://img.shields.io/coveralls/kylefdoherty/email-prediction.svg)](https://coveralls.io/r/kylefdoherty/email-prediction?branch=master)
 
 TODO: Write a gem description
 
