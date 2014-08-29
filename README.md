@@ -14,7 +14,7 @@ There are two ways to use this gem:
 
 ###1st
 
-Install the Gem
+Install the Gem:
 
     gem install predict_email
 
@@ -28,17 +28,21 @@ This will prompt you to enter a name and company website.
 
 ###2nd
 
-Fork and clone this repo 
+Fork and clone this repo: 
 
     git clone git@github.com:{your-github-username}/predict-email.git
 
-Run Bundle install 
+Run Bundle install: 
 
     bundle install
 
-Add a csv file to lib/predict_email/csv
+Add your own csv file with names and company emails to lib/predict_email/csv:
 
-![alt tag](https://raw.githubusercontent.com/kylefdoherty/predict-email/master/images/add_csv_file.png)
+    ![alt tag](https://raw.githubusercontent.com/kylefdoherty/predict-email/master/images/add_csv_file.png)
+
+
+
+
 
 
 ## Usage
