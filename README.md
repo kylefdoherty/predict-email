@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/kylefdoherty/predict-email.svg?branch=master)](https://travis-ci.org/kylefdoherty/predict-email)
 [![Coverage Status](https://img.shields.io/coveralls/kylefdoherty/email-prediction.svg)](https://coveralls.io/r/kylefdoherty/email-prediction?branch=master)
 
-Predict Email was a coding challenge I recieved. The challenge was to create an email predictor that uses current contacts, such as: Linda Li,linda.li@alphasights.com, Sergey Brin,s.brin@google.com, Steve Jobs,s.j@apple.com, etc. to predict what a given person's email should be.  So for example, if I input: "Jane Doe, Apple.com", it should predict that Jane's email should be - j.d@apple.com.
+Predict Email was a coding challenge I recently recieved, which I decided to turn into a gem to make it easy to use and to learn how to make Ruby Gems. The challenge was to create an email predictor that uses current contacts, such as: Sergey Brin,s.brin@google.com, Steve Jobs,s.j@apple.com, etc. to predict what a given person's email should be.  So for example, if I input: "Jane Doe, Apple.com", it should predict that Jane's email will be - j.d@apple.com.
 
 If you install the gem it comes with a sample-data.csv file which contains 7 contacts from various companies. If you fork and clone the repo you can upload your own csv file, see intsallation below for more info.
 
