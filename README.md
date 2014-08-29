@@ -38,9 +38,13 @@ Run Bundle install:
 
 Add your own csv file with names and company emails to lib/predict_email/csv:
 
-    ![alt tag](https://raw.githubusercontent.com/kylefdoherty/predict-email/master/images/add_csv_file.png)
+![alt tag](https://raw.githubusercontent.com/kylefdoherty/predict-email/master/images/add_csv_file.png)
 
+In find_pattern.rb change the file path to the csv you added:
 
+![alt tag](https://raw.githubusercontent.com/kylefdoherty/predict-email/master/images/find_pattern_file.png)
+
+![alt tag](https://raw.githubusercontent.com/kylefdoherty/predict-email/master/images/find_pattern_rb_%E2%80%94_predict_email.png)
 
 
 
