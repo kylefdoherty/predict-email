@@ -30,7 +30,15 @@ This will prompt you to enter a name and company website.
 
 Fork and clone this repo 
 
-    git clone git@github.com:{username}/predict-email.git
+    git clone git@github.com:{your-github-username}/predict-email.git
+
+Run Bundle install 
+
+    bundle install
+
+Add a csv file to lib/predict_email/csv
+
+    ![alt tag](https://github.com/kylefdoherty/predict-email/blob/master/images/add_csv_file.png)
 
 
 ## Usage
