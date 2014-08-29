@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/kylefdoherty/email-prediction.svg?branch=master)](https://travis-ci.org/kylefdoherty/email-prediction)
 [![Coverage Status](https://img.shields.io/coveralls/kylefdoherty/email-prediction.svg)](https://coveralls.io/r/kylefdoherty/email-prediction?branch=master)
 
-Predict Email was a coding challenge I recieved from a company. The challenge was to create an email predictor that uses current contacts, such as: Linda Li,linda.li@alphasights.com, Sergey Brin,s.brin@google.com, Steve Jobs,s.j@apple.com, etc. to predict what a given person's email should be.  So for example, if I input: "Jane Doe, Apple.com", it should predict that Jane's email should be - j.d@apple.com.
+Predict Email was a coding challenge I recieved. The challenge was to create an email predictor that uses current contacts, such as: Linda Li,linda.li@alphasights.com, Sergey Brin,s.brin@google.com, Steve Jobs,s.j@apple.com, etc. to predict what a given person's email should be.  So for example, if I input: "Jane Doe, Apple.com", it should predict that Jane's email should be - j.d@apple.com.
 
 If you install the gem it comes with a sample-data.csv file which contains 7 contacts from various companies. If you fork and clone the repo you can upload your own csv file, see intsallation below for more info.
 
@@ -51,11 +51,24 @@ In find_pattern.rb change the file path to the csv you added:
 
 ## Usage
 
-TODO: Write usage instructions here
+If you've installed the gem locally all you need to do to run it is type:
+
+    predict_email
+
+After that you'll be prompted to give a name and company.  For example, type:
+
+    Rustin Cohle, google
+
+This will return the prediction for his email.  Note that if you don't include a full name or company it will give you an error and tell you to try again.  Additionally, if there is no contacts for a specific a company you input it will not be able to return a prediction.
+
+If you've forked and cloned the repo, simple follow the installation instructions above and then run:
+
+    predict_email
+
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/predict_email/fork )
+1. Fork it ( https://github.com/kylefdoherty/predict_email/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
