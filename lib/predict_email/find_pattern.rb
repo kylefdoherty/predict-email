@@ -2,22 +2,32 @@ require 'csv'
 
 module PredictEmail
   class FindPattern
-    attr_reader :emails
+    attr_reader :emails, :company_name
 
-    def initialize 
-      @emails = CSV.read(Dir.pwd + '/lib/predict_email/csv/sample_data.csv').inject({}) do |result, element|
-        result[element.first] = element.last
-        result
-      end 
+    def initialize(company_name, emails = nil) 
+      @emails = emails || {
+      "John Ferguson" => "john.ferguson@alphasights.com",
+      "Damon Aw" => "damon.aw@alphasights.com",
+      "Linda Li" => "linda.li@alphasights.com",
+      "Larry Page" => "larry.p@google.com",
+      "Sergey Brin" => "s.brin@google.com",
+      "Steve Jobs" => "s.j@apple.com",
+      "Kyle Doherty" => "kyle_doherty@flatironschool.com"
+    }
+
+      @company_name = company_name
     end 
 
-    def normalize_company_name(company)
-      company.downcase.gsub(/\s+/, "")
+    
+    def find_patterns
+      find_contacts.map do |contact|
+        email_pattern(contact)
+      end.compact.uniq
     end 
 
-    def find_contacts(company)
-      company = normalize_company_name(company)
-      emails.select {|k,v| v.include?(company) }
+    private 
+    def find_contacts
+      emails.select {|k,v| v.include?(company_name.downcase.gsub(/\s+/, "")) }
     end 
 
     def split_email(email)
@@ -37,24 +47,10 @@ module PredictEmail
         elsif first_name[0] == before_dot && last_name[0] == after_dot
           "first_initial_dot_last_initial"
         else 
-          nil
+          
         end 
     end 
 
-    def find_patterns(company)
-      patterns = []
-
-      if find_contacts(company).empty? 
-        patterns << nil
-      else 
-   
-        find_contacts(company).each do |contact|
-          patterns << email_pattern(contact)
-        end 
-
-      end 
-        patterns = patterns.uniq
-    end 
   end 
 end 
 

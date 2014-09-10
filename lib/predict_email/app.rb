@@ -21,8 +21,7 @@ module PredictEmail
       end 
 
       def initialize
-        prediction = PredictEmail.new
-
+    
         puts "Enter a name and company website, such as: 'Steve Jobs', 'Apple.com' OR type 'exit' to leave."
         user_input = gets.strip
         
@@ -30,7 +29,7 @@ module PredictEmail
 
           puts "\n"
           name, company = parse_input(valid_input(user_input))
-          p "PREDICTION: #{prediction.predict_email(name, company.strip)}"
+          p "PREDICTION: #{PredictEmail.new(name, company.strip).predict_email}"
           puts "\n"
           p "Enter a name and company website, such as: 'Steve Jobs', 'Apple.com'"
           user_input = gets.strip

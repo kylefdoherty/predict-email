@@ -2,11 +2,19 @@ require_relative 'find_pattern'
 
 module PredictEmail
   class PredictEmail
+    attr_reader :name, :company
 
-    def predict_email(name, company)
-      patterns = FindPattern.new.find_patterns(company)
+    def initialize(name, company)
+      @name = name
+      @company = company 
+    end 
+
+
+    def predict_email
+      patterns = FindPattern.new(company).find_patterns
+      
       if patterns.first 
-        emails = patterns.map {|pat| self.send(pat.to_sym, name, company)}
+        emails = patterns.map {|pat| PatternMatcher.new(name, pat, company).return_match}
         "#{company} uses #{patterns.size} email #{pluralize_pattern(patterns)}: #{patterns_to_string(patterns)}. We predict #{name}'s email to be: #{emails_to_string(emails)}."
       else 
         "Sorry, we can't predict the email for this person."
@@ -25,25 +33,6 @@ module PredictEmail
       name.downcase.split(" ")
     end 
 
-    def first_name_dot_last_name(name, company)
-      first, last = split_name(name)
-      "#{first}.#{last}@#{company}"
-    end 
-
-    def first_name_dot_last_initial(name, company)
-      first, last = split_name(name)
-      "#{first}.#{last[0]}@#{company}"
-    end 
-
-    def first_initial_dot_last_name(name, company)
-      first, last = split_name(name)
-      "#{first[0]}.#{last}@#{company}"
-    end 
-
-    def first_initial_dot_last_initial(name,company)
-      first, last = split_name(name)
-      "#{first[0]}.#{last[0]}@#{company}"
-    end 
 
     def pluralize_pattern(patterns)
       patterns.size > 1 ? 'patterns' : 'pattern'
